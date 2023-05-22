@@ -30,8 +30,10 @@
             margin-left: 200px;
             padding: 15px;
             display: none;
-         }
-
+        }
+        .content.show {
+            display: block;
+        }
         .head1 {
             line-height: 107%;
             font-size: 25px;
@@ -116,6 +118,7 @@
             left: 0;
             background-color: #1b1616;
             padding-top: 20px;
+            overflow-y: auto;
         }
 
         .sidenav a {
@@ -125,6 +128,13 @@
             color: white;
             display: block;
             transition: background-color 0.3s ease;
+        }
+
+        .sidenav a.active {
+            background-color: #ddd;
+            color: #7ac142;
+            font-weight: bold;
+            transform: translateX(5px);
         }
 
         .sidenav a:hover {
@@ -221,9 +231,11 @@
     <a href="?link=5" class="link1" onclick="showContent('content5')">How to know the integration status?</a><br>
     <hr>
 </div>
+
 <div class="popup" onclick="hidePopup()">
     <img src="" alt="Popup Image">
 </div>
+
 <div id="content1" class="content main">
     <h2 class="head2 fade-in"><strong>How to add ISU for an Integration?</strong></h2><p></p>
     <p class="para fade-in"><span class="spn"><b>Step 1:</b> Select the integration link's related action by clicking it. Navigate to "Workday Account" and select "Edit".</span>
@@ -302,6 +314,7 @@
         onclick="showPopup(this)" class="fade-in">
     <hr>
 </div>
+`
 <script>
   function showContent(contentId) {
     const contentElements = document.getElementsByClassName('content');
@@ -321,18 +334,17 @@
   if (linkParam) {
     showContent(`content${linkParam}`);
   }
-    function showPopup(img) {
-            var popup = document.querySelector(".popup");
-            var popupImg = popup.querySelector("img");
-            popupImg.src = img.src;
-            popup.style.display = "flex";
-        }
+  function showPopup(img) {
+    var popup = document.querySelector(".popup");
+    var popupImg = popup.querySelector("img");
+    popupImg.src = img.src;
+    popup.style.display = "flex";
+  }
 
-        function hidePopup() {
-            var popup = document.querySelector(".popup");
-            popup.style.display = "none";
-        }
-
+  function hidePopup() {
+    var popup = document.querySelector(".popup");
+    popup.style.display = "none";
+  }
 </script>
 
 </body>
